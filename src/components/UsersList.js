@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom';
+
 const UsersList = ({ users }) => {
   const usersList = users.map((user) => {
     return (
-      <li
+      <Link
+        to={`/user/details/${user.id}`}
         className="bg-white p-4 rounded-lg mt-4 shadow-lg scale cursor-pointer w-72"
         key={user.id}
       >
@@ -23,7 +26,7 @@ const UsersList = ({ users }) => {
         <p>
           <span className="font-bold">City:</span> {user.address.city}
         </p>
-      </li>
+      </Link>
     );
   });
 
