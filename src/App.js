@@ -1,111 +1,15 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import UsersList from './components/UsersList';
 
 const App = () => {
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: 'Luis',
-      username: 'Bret',
-      phone: '1-770-736-8031 x56442',
-      email: 'correo1@example.com',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-    },
-    {
-      id: 2,
-      name: 'Maria',
-      username: 'Antonette',
-      phone: '1-770-36-8031 x56442',
-      email: 'correo2@example.com',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-    },
-    {
-      id: 3,
-      name: 'Pedro',
-      username: 'Pedro123',
-      phone: '1-70-736-8031 x56442',
-      email: 'correo3@example.com',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-    },
-    {
-      id: 4,
-      name: 'Mario',
-      username: 'Mario123',
-      phone: '1-770-736-8031 x6442',
-      email: 'correo4@example.com',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-    },
-    {
-      id: 5,
-      name: 'Ana',
-      username: 'Ana123',
-      phone: '1-770-76-8031 x56442',
-      email: 'correo5@example.com',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-    },
-    {
-      id: 6,
-      name: 'Lucia',
-      username: 'Lucia123',
-      phone: '1-770-736-8031 x5642',
-      email: 'correo6@example.com',
-      address: {
-        street: 'Kulas Light',
-        suite: 'Apt. 556',
-        city: 'Gwenborough',
-        zipcode: '92998-3874',
-        geo: {
-          lat: '-37.3159',
-          lng: '81.1496',
-        },
-      },
-    },
-  ]);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users').then((res) => {
+      setUsers(res.data);
+    });
+  }, []);
 
   return (
     <div className="flex flex-col items-center space-y-6 py-6 min-h-screen bg-gray-100 text-text">
@@ -127,7 +31,7 @@ const App = () => {
       </a>
 
       {/* Users list */}
-      <UsersList users={users} />
+      {users && <UsersList users={users} />}
     </div>
   );
 };

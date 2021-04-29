@@ -2,7 +2,7 @@ const UsersList = ({ users }) => {
   const usersList = users.map((user) => {
     return (
       <li
-        className="bg-white p-4 rounded-lg mt-4 shadow-lg scale cursor-pointer w-64"
+        className="bg-white p-4 rounded-lg mt-4 shadow-lg scale cursor-pointer w-72"
         key={user.id}
       >
         <p>
@@ -30,7 +30,7 @@ const UsersList = ({ users }) => {
   return (
     <div>
       <h2 className="text-center text-2xl font-semibold">Users list</h2>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
         {usersList}
       </ul>
     </div>
