@@ -26,6 +26,14 @@ const App = () => {
     users.splice(user.id - 1, 1, user);
   };
 
+  /* Add user */
+  const add = (user) => {
+    const newUser = [...users, user];
+    setUsers(newUser);
+  };
+
+  const length = users.length;
+
   return (
     <div className="flex flex-col items-center space-y-6 py-6 min-h-screen bg-gray-100 text-text">
       <Router>
@@ -41,7 +49,7 @@ const App = () => {
             <Home users={users} deleteUser={deleteUser} />
           </Route>
           <Route path="/new-user">
-            <AddUser />
+            <AddUser add={add} length={length} />
           </Route>
           <Route path="/user/details/:id">
             <UserDetails />
