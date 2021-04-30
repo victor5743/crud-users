@@ -14,6 +14,12 @@ const App = () => {
     });
   }, []);
 
+  /* Delete user from list */
+  const deleteUser = (id) => {
+    const newUsers = users.filter((user) => user.id !== id);
+    setUsers(newUsers);
+  };
+
   return (
     <div className="flex flex-col items-center space-y-6 py-6 min-h-screen bg-gray-100 text-text">
       <Router>
@@ -26,7 +32,7 @@ const App = () => {
 
         <Switch>
           <Route exact path="/">
-            <Home users={users} />
+            <Home users={users} deleteUser={deleteUser} />
           </Route>
           <Route path="/new-user">
             <AddUser />

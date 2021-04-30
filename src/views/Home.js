@@ -1,7 +1,7 @@
 import UsersList from '../components/UsersList';
 import { Link } from 'react-router-dom';
 
-const Home = ({ users }) => {
+const Home = ({ users, deleteUser }) => {
   return (
     <div className="flex flex-col items-center">
       {/* Link to create a new user */}
@@ -20,7 +20,7 @@ const Home = ({ users }) => {
       </Link>
 
       {/* Users list */}
-      {users && <UsersList users={users} />}
+      {users && <UsersList users={users} deleteUser={deleteUser} />}
     </div>
   );
 };
