@@ -4,6 +4,7 @@ import Home from './views/Home';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import AddUser from './views/AddUser';
 import UserDetails from './views/UserDetails';
+import EditUser from './views/EditUser';
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -18,6 +19,11 @@ const App = () => {
   const deleteUser = (id) => {
     const newUsers = users.filter((user) => user.id !== id);
     setUsers(newUsers);
+  };
+
+  /* Edit user */
+  const edit = (user) => {
+    users.splice(user.id - 1, 1, user);
   };
 
   return (
@@ -39,6 +45,9 @@ const App = () => {
           </Route>
           <Route path="/user/details/:id">
             <UserDetails />
+          </Route>
+          <Route path="/user/edit/:id">
+            <EditUser edit={edit} />
           </Route>
         </Switch>
       </Router>

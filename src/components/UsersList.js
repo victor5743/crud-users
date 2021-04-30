@@ -27,12 +27,20 @@ const UsersList = ({ users, deleteUser }) => {
             <span className="font-bold">City:</span> {user.address.city}
           </p>
         </Link>
-        <button
-          onClick={() => deleteUser(user.id)}
-          className="bg-red-500 text-white px-2 py-1 rounded-lg mt-2 focus:outline-none scale"
-        >
-          Delete
-        </button>
+        <div className="flex space-x-2">
+          <Link
+            to={`/user/edit/${user.id}`}
+            className="bg-green-500 text-white px-2 py-1 rounded-lg mt-2 focus:outline-none scale"
+          >
+            Edit
+          </Link>
+          <button
+            onClick={() => deleteUser(user.id)}
+            className="bg-red-500 text-white px-2 py-1 rounded-lg mt-2 focus:outline-none scale"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     );
   });
